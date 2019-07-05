@@ -80,6 +80,6 @@ class MessageController extends Controller
             'method'     => 'getThreads',
             'oUser'      => Yii::$app->user->identity
         ]));
-        $this->goBack();
+        return $this->actionIndex();
     }
 }

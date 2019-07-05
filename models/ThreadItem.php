@@ -20,4 +20,8 @@ class ThreadItem extends \yii\db\ActiveRecord{
     public function getUser() {
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
+    
+    public function getMedia() {
+        return $this->hasMany(Media::class, ['thread_item_id' => 'id']);
+    }
 }
