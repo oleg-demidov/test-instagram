@@ -42,7 +42,7 @@ class AuthController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect('profile/index');
+            return $this->redirect(['profile/index']);
         }
 
         $model->password = '';

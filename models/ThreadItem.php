@@ -2,6 +2,7 @@
 
 namespace app\models;
 use app\models\Thread;
+use app\models\Media;
 /**
  * Description of Thread
  *

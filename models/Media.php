@@ -22,9 +22,8 @@ class Media extends \yii\db\ActiveRecord{
     public function behaviors() {
         return [
             [
-                'class' => \klisl\behaviors\JsonBehavior::class,
-                'property' => 'urls',
-                'jsonField' => 'urls'
+                'class' => \paulzi\jsonBehavior\JsonBehavior::className(),
+                'attributes' => ['urls'],
             ]
         ];
     }
