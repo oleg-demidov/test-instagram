@@ -6,7 +6,7 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'queue'],
     'controllerNamespace' => 'app\commands',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -26,6 +26,33 @@ $config = [
             ],
         ],
         'db' => $db,
+        'redis' => [
+            'class' => \yii\redis\Connection::class,
+            // ...
+
+            // retry connecting after connection has timed out
+            // yiisoft/yii2-redis >=2.0.7 is required for this.
+            'retries' => 1,
+        ],
+        'instagram' => [
+            'class' => 'app\instagram\InstagramComponent',
+            'debug' => false,
+            'truncatedDebug' => false,
+            'console' => true,
+            'storageConf' => [
+                'storage'    => 'mysql',
+                'dbhost'     => 'localhost',
+                'dbname'     => 'instagram',
+                'dbusername' => 'root',
+                'dbpassword' => '23197'
+            ]
+        ],        
+        'queue' => [
+            'class' => \yii\queue\redis\Queue::class,
+            'redis' => 'redis', // Redis connection component or its config
+            'channel' => 'queue', // Queue channel key
+            'as log' => \yii\queue\LogBehavior::class,
+        ],
     ],
     'params' => $params,
     /*

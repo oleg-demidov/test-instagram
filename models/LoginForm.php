@@ -41,10 +41,8 @@ class LoginForm extends Model
      */
     public function login()
     {
-        if ($this->validate()) {
-            $ii =Yii::$app->instagram;
-            return $ii->login($this->username, $this->password);
-//            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+        if ($this->validate()) { 
+            return Yii::$app->instagram->login($this->username,  $this->password);
         }
         return false;
     }
