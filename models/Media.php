@@ -13,11 +13,21 @@ namespace app\models;
  *
  * @author oleg
  */
-class Media extends \yii\redis\ActiveRecord{
+class Media extends \yii\db\ActiveRecord{
     
     const TYPE_IMAGE = 'image';
     const TYPE_AUDIO = 'audio';
     const TYPE_VIDEO = 'video';
+    
+    public function behaviors() {
+        return [
+            [
+                'class' => \klisl\behaviors\JsonBehavior::class,
+                'property' => 'urls',
+                'jsonField' => 'urls'
+            ]
+        ];
+    }
     
     public static function tableName() {
         return 'media';
