@@ -83,9 +83,13 @@ class InstagramDirect  extends InstagramJob{
         if($oThreadItemMedia->isVideoVersions()){
             $sType = Media::TYPE_VIDEO;
             $aVideos = $oThreadItemMedia->getVideoVersions();
+            /*
+             * Это лишь превьюхи видео
+             */
             foreach ($aVideos as $oVideo ) {
                 $aUrls[] = $oVideo->getUrl();
             }
+           
         }
         
         $oMedia = new Media();
