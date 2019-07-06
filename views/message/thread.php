@@ -3,6 +3,7 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Url;
+use app\widgets\MediaWidget;
 
 $this->title = 'Thread '. $oThread->title;
 ?>
@@ -19,9 +20,9 @@ $this->title = 'Thread '. $oThread->title;
                     <div class="panel-heading"><?php echo $oThreadItem->getUser()->one()->username;?></div>
                     <div class="panel-body">
                         <?php 
-                            echo $oThreadItem->text;                            print_r($oThreadItem->getMedia()->all());
-                            foreach ($oThreadItem->getMedia() as $oMedia) {
-//                                print_r($oMedia);
+                            echo $oThreadItem->text;  
+                            foreach ($oThreadItem->getMedia()->all() as $oMedia) {
+                                echo MediaWidget::widget(['oMedia' => $oMedia]);
                             }
                         ?>
                     </div>
