@@ -80,6 +80,8 @@ class MessageController extends Controller
             'method'     => 'getThreads',
             'oUser'      => Yii::$app->user->identity
         ]));
+        
+        Yii::$app->session->setFlash('info', 'Your Instagram dialogs now in process sinhronization. Please wait 1 min.');
         return $this->actionIndex();
     }
 }

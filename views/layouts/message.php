@@ -67,13 +67,13 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         
+        
+        <?= Alert::widget() ?>
         <ul class="nav nav-pills">
             <li role="presentation" class="active"><a href="<?php echo Url::to(['message/index'])?>">Messages</a></li>
             
             <li role="presentation" class="active"><a href="<?php echo  Url::to(['message/update'])?>">Update</a></li>
         </ul>
-        
-        <?= Alert::widget() ?>
         <?= $content ?>
     </div>
 </div>
